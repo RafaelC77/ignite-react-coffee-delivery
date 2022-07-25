@@ -1,22 +1,24 @@
-import {
-  Coffee,
-  Minus,
-  Package,
-  Plus,
-  ShoppingCart,
-  Timer,
-} from "phosphor-react";
 import { Banner } from "./components/Banner";
+import { Coffee } from "./components/Coffee";
 
-import {
-  AddToCartButton,
-  AddToCartComponent,
-  CoffeeListComponent,
-  DecrementButton,
-  IncrementButton,
-  PriceTag,
-  Tag,
-} from "./styles";
+import { CoffeeListComponent } from "./styles";
+
+const coffeeList = [
+  {
+    id: "1",
+    image_url: "src/assets/coffee_images/expresso.png",
+    tags: ["tradicional"],
+    title: "Expresso Tradicional",
+    description: "O tradicional café feito com água quente e grãos moídos",
+  },
+  {
+    id: "2",
+    image_url: "src/assets/coffee_images/expresso.png",
+    tags: ["tradicional"],
+    title: "Expresso Tradicional",
+    description: "O tradicional café feito com água quente e grãos moídos",
+  },
+];
 
 export function Home() {
   return (
@@ -27,221 +29,17 @@ export function Home() {
         <h2>Nossos cafés</h2>
 
         <ul>
-          <li>
-            <img
-              src="src/assets/coffee_images/expresso.png"
-              alt="xícara cheia de café com um pires por baixo vista de cima"
-            />
-            <div>
-              <Tag>Tradicional</Tag>
-            </div>
-            <h3>Expresso Tradicional</h3>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
-            <AddToCartComponent>
-              <PriceTag>
-                R$ <strong>9,90</strong>
-              </PriceTag>
-              <div>
-                <DecrementButton>
-                  <Minus />
-                </DecrementButton>
-                <input
-                  type="number"
-                  id="price"
-                  step={1}
-                  placeholder="1"
-                  readOnly
-                />
-                <IncrementButton>
-                  <Plus />
-                </IncrementButton>
-              </div>
-
-              <AddToCartButton>
-                <ShoppingCart weight="fill" size={22} />
-              </AddToCartButton>
-            </AddToCartComponent>
-          </li>
-
-          <li>
-            <img
-              src="src/assets/coffee_images/expresso.png"
-              alt="xícara cheia de café com um pires por baixo vista de cima"
-            />
-            <div>
-              <Tag>Tradicional</Tag>
-            </div>
-            <h3>Expresso Tradicional</h3>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
-            <AddToCartComponent>
-              <PriceTag>
-                R$ <strong>9,90</strong>
-              </PriceTag>
-              <div>
-                <DecrementButton>
-                  <Minus />
-                </DecrementButton>
-                <input
-                  type="number"
-                  id="price"
-                  step={1}
-                  placeholder="1"
-                  readOnly
-                />
-                <IncrementButton>
-                  <Plus />
-                </IncrementButton>
-              </div>
-
-              <AddToCartButton>
-                <ShoppingCart weight="fill" size={22} />
-              </AddToCartButton>
-            </AddToCartComponent>
-          </li>
-
-          <li>
-            <img
-              src="src/assets/coffee_images/expresso.png"
-              alt="xícara cheia de café com um pires por baixo vista de cima"
-            />
-            <div>
-              <Tag>Tradicional</Tag>
-            </div>
-            <h3>Expresso Tradicional</h3>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
-            <AddToCartComponent>
-              <PriceTag>
-                R$ <strong>9,90</strong>
-              </PriceTag>
-              <div>
-                <DecrementButton>
-                  <Minus />
-                </DecrementButton>
-                <input
-                  type="number"
-                  id="price"
-                  step={1}
-                  placeholder="1"
-                  readOnly
-                />
-                <IncrementButton>
-                  <Plus />
-                </IncrementButton>
-              </div>
-
-              <AddToCartButton>
-                <ShoppingCart weight="fill" size={22} />
-              </AddToCartButton>
-            </AddToCartComponent>
-          </li>
-
-          <li>
-            <img
-              src="src/assets/coffee_images/expresso.png"
-              alt="xícara cheia de café com um pires por baixo vista de cima"
-            />
-            <div>
-              <Tag>Tradicional</Tag>
-            </div>
-            <h3>Expresso Tradicional</h3>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
-            <AddToCartComponent>
-              <PriceTag>
-                R$ <strong>9,90</strong>
-              </PriceTag>
-              <div>
-                <DecrementButton>
-                  <Minus />
-                </DecrementButton>
-                <input
-                  type="number"
-                  id="price"
-                  step={1}
-                  placeholder="1"
-                  readOnly
-                />
-                <IncrementButton>
-                  <Plus />
-                </IncrementButton>
-              </div>
-
-              <AddToCartButton>
-                <ShoppingCart weight="fill" size={22} />
-              </AddToCartButton>
-            </AddToCartComponent>
-          </li>
-
-          <li>
-            <img
-              src="src/assets/coffee_images/expresso.png"
-              alt="xícara cheia de café com um pires por baixo vista de cima"
-            />
-            <div>
-              <Tag>Tradicional</Tag>
-            </div>
-            <h3>Expresso Tradicional</h3>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
-            <AddToCartComponent>
-              <PriceTag>
-                R$ <strong>9,90</strong>
-              </PriceTag>
-              <div>
-                <DecrementButton>
-                  <Minus />
-                </DecrementButton>
-                <input
-                  type="number"
-                  id="price"
-                  step={1}
-                  placeholder="1"
-                  readOnly
-                />
-                <IncrementButton>
-                  <Plus />
-                </IncrementButton>
-              </div>
-
-              <AddToCartButton>
-                <ShoppingCart weight="fill" size={22} />
-              </AddToCartButton>
-            </AddToCartComponent>
-          </li>
-
-          <li>
-            <img
-              src="src/assets/coffee_images/expresso.png"
-              alt="xícara cheia de café com um pires por baixo vista de cima"
-            />
-            <div>
-              <Tag>Tradicional</Tag>
-            </div>
-            <h3>Expresso Tradicional</h3>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
-            <AddToCartComponent>
-              <PriceTag>
-                R$ <strong>9,90</strong>
-              </PriceTag>
-              <div>
-                <DecrementButton>
-                  <Minus />
-                </DecrementButton>
-                <input
-                  type="number"
-                  id="price"
-                  step={1}
-                  placeholder="1"
-                  readOnly
-                />
-                <IncrementButton>
-                  <Plus />
-                </IncrementButton>
-              </div>
-
-              <AddToCartButton>
-                <ShoppingCart weight="fill" size={22} />
-              </AddToCartButton>
-            </AddToCartComponent>
-          </li>
+          {coffeeList.map((coffee) => {
+            return (
+              <Coffee
+                key={coffee.id}
+                image_source={coffee.image_url}
+                tags={coffee.tags}
+                title={coffee.title}
+                description={coffee.description}
+              />
+            );
+          })}
         </ul>
       </CoffeeListComponent>
     </>
