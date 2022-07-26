@@ -85,6 +85,10 @@ export const BaseInput = styled.input`
   padding: 0.75rem;
   border: 1px solid ${(props) => props.theme["base-button"]};
   border-radius: 4px;
+
+  &::placeholder {
+    color: ${(props) => props.theme["base-label"]};
+  }
 `;
 
 export const PostalCodeInput = styled(BaseInput)`
@@ -110,6 +114,59 @@ export const StateInfo = styled(BaseInput)`
 export const AditionalInfo = styled(BaseInput)`
   width: 100%;
   position: relative;
+`;
+
+export const PaymentMethod = styled.div`
+  padding: 2.5rem;
+  background: ${(props) => props.theme["base-card"]};
+  border-radius: 6px;
+
+  header {
+    display: flex;
+    gap: 0.5rem;
+    color: ${(props) => props.theme["purple"]};
+    margin-bottom: 2rem;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 130%;
+      color: ${(props) => props.theme["base-subtitle"]};
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 130%;
+      color: ${(props) => props.theme["base-text"]};
+      margin-top: 0.25rem;
+    }
+  }
+`;
+
+export const PaymentOptions = styled.div`
+  display: flex;
+  gap: 0.75rem;
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    background: ${(props) => props.theme["base-button"]};
+    border: 0;
+    border-radius: 6px;
+    color: ${(props) => props.theme["purple"]};
+
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+      font-size: 0.75rem;
+      line-height: 160%;
+      text-transform: uppercase;
+      color: ${(props) => props.theme["base-text"]};
+    }
+  }
 `;
 
 export const SelectedCoffeesInfo = styled.div``;

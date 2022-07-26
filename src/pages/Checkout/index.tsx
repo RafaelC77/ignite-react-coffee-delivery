@@ -1,4 +1,10 @@
-import { MapPinLine } from "phosphor-react";
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from "phosphor-react";
 import {
   AddressAndPaymentInfo,
   AddressForm,
@@ -8,6 +14,8 @@ import {
   CityInfo,
   InputFields,
   NumberInput,
+  PaymentMethod,
+  PaymentOptions,
   PostalCodeInput,
   SelectedCoffeesInfo,
   StateInfo,
@@ -43,6 +51,35 @@ export function Checkout() {
               <StateInfo type="text" placeholder="UF" />
             </InputFields>
           </AddressForm>
+
+          <PaymentMethod>
+            <header>
+              <CurrencyDollar size={22} />
+
+              <span>
+                <h3>Pagamento</h3>
+                <p>
+                  O pagamento é feito na entrega. Escolha a forma que deseja
+                  pagar
+                </p>
+              </span>
+            </header>
+
+            <PaymentOptions>
+              <button>
+                <CreditCard size={16} />
+                <span>CARTÃO DE CRÉDITO</span>
+              </button>
+              <button>
+                <Bank size={16} />
+                <span>CARTÃO DE DÉBITO</span>
+              </button>
+              <button>
+                <Money size={16} />
+                <span>DINHEIRO</span>
+              </button>
+            </PaymentOptions>
+          </PaymentMethod>
         </AddressAndPaymentInfo>
 
         <SelectedCoffeesInfo>
