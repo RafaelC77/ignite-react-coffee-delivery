@@ -6,10 +6,13 @@ export const HeaderComponent = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const InfoBar = styled.div`
+  display: flex;
   gap: 0.75rem;
 
   div {
-    margin-left: auto;
     height: 2.375rem;
     padding: 0.5rem;
     border-radius: 6px;

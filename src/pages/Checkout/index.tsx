@@ -39,7 +39,7 @@ import {
 export function Checkout() {
   return (
     <CheckoutComponent>
-      <form action="">
+      <form action="/success">
         <AddressAndPaymentInfo>
           <h2>Complete seu pedido</h2>
           <AddressForm>
