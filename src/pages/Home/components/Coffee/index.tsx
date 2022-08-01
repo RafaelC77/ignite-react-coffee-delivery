@@ -1,4 +1,6 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
 import {
   AddToCartButton,
   AddToCartComponent,
@@ -22,6 +24,38 @@ export function Coffee({
   title,
   description,
 }: CoffeeProps) {
+  const { setCoffee, updateCoffeeCart, coffeeCart } = useContext(CartContext);
+  const [coffeeAmount, setCoffeAmount] = useState(1);
+
+  function handleAddCoffee() {
+    const newCoffeeCart = [...coffeeCart];
+
+    const coffeeExists = newCoffeeCart.find((coffee) => (coffee.title = title));
+
+    if (coffeeExists) {
+      const coffeeIndex = newCoffeeCart.indexOf(coffeeExists);
+
+      newCoffeeCart[coffeeIndex].amount = coffeeExists.amount + coffeeAmount;
+      updateCoffeeCart(newCoffeeCart);
+
+      return;
+    }
+    setCoffee(title, image_source, coffeeAmount);
+  }
+
+  function handleIncreaseCoffee() {
+    setCoffeAmount((prevState) => prevState + 1);
+  }
+
+  function handleDecreaseCoffee() {
+    if (coffeeAmount <= 1) {
+      return;
+    }
+    setCoffeAmount((prevState) => prevState - 1);
+  }
+
+  console.log(coffeeCart);
+
   return (
     <CoffeeComponent>
       <img
@@ -40,16 +74,22 @@ export function Coffee({
           R$ <strong>9,90</strong>
         </PriceTag>
         <div>
-          <DecrementButton>
+          <DecrementButton onClick={handleDecreaseCoffee}>
             <Minus />
           </DecrementButton>
-          <input type="number" id="price" step={1} placeholder="1" readOnly />
-          <IncrementButton>
+          <input
+            type="number"
+            id="price"
+            step={1}
+            placeholder={String(coffeeAmount)}
+            readOnly
+          />
+          <IncrementButton onClick={handleIncreaseCoffee}>
             <Plus />
           </IncrementButton>
         </div>
 
-        <AddToCartButton>
+        <AddToCartButton onClick={handleAddCoffee}>
           <ShoppingCart weight="fill" size={22} />
         </AddToCartButton>
       </AddToCartComponent>
