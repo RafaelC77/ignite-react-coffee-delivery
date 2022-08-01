@@ -8,7 +8,11 @@ export const HeaderComponent = styled.header`
   align-items: center;
 `;
 
-export const InfoBar = styled.div`
+interface InfoBarProps {
+  isCartEmpty: boolean;
+}
+
+export const InfoBar = styled.div<InfoBarProps>`
   display: flex;
   gap: 0.75rem;
 
@@ -54,6 +58,8 @@ export const InfoBar = styled.div`
 
       font-size: 0.75rem;
       font-weight: 700;
+
+      visibility: ${(props) => (props.isCartEmpty ? "hidden" : "visible")};
     }
   }
 `;
