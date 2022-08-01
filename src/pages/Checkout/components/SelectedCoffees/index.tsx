@@ -1,4 +1,6 @@
 import { Minus, Plus, Trash } from "phosphor-react";
+import { useContext } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
 
 import {
   SelectedCoffeesInfo,
@@ -16,70 +18,90 @@ import {
 } from "./styles";
 
 export function SelectedCoffees() {
+  const { coffeeCart, updateCoffeeCart } = useContext(CartContext);
+
+  function handleIncreaseCoffee(title: string) {
+    const newCoffeeCart = [...coffeeCart];
+    const selectedCoffee = newCoffeeCart.find(
+      (coffee) => coffee.title === title
+    );
+    const coffeeIndex = newCoffeeCart.indexOf(selectedCoffee!);
+
+    newCoffeeCart[coffeeIndex].amount = selectedCoffee!.amount + 1;
+    updateCoffeeCart(newCoffeeCart);
+  }
+
+  function handleDecreaseCoffee(title: string) {
+    const newCoffeeCart = [...coffeeCart];
+    const selectedCoffee = newCoffeeCart.find(
+      (coffee) => coffee.title === title
+    );
+    const coffeeIndex = newCoffeeCart.indexOf(selectedCoffee!);
+
+    if (selectedCoffee!.amount <= 1) {
+      return;
+    }
+
+    newCoffeeCart[coffeeIndex].amount = selectedCoffee!.amount - 1;
+    updateCoffeeCart(newCoffeeCart);
+  }
+
+  function handleRemoveCoffee(title: string) {
+    const previousCoffeeCart = [...coffeeCart];
+
+    const newCoffeeCart = previousCoffeeCart.filter(
+      (coffee) => coffee.title !== title
+    );
+    updateCoffeeCart(newCoffeeCart);
+  }
+
   return (
     <SelectedCoffeesInfo>
       <h2>Cafés selecionados</h2>
       <SelectedCoffeesCard>
         <ul>
-          <li>
-            <img src="src/assets/coffee_images/american_espresso.png" alt="" />
-            <CoffeeInfo>
-              <span>Expresso Tradicional</span>
-              <ButtonContainer>
-                <div>
-                  <DecrementButton>
-                    <Minus />
-                  </DecrementButton>
-                  <input
-                    type="amount"
-                    id="price"
-                    step={1}
-                    placeholder="1"
-                    readOnly
-                  />
-                  <IncrementButton>
-                    <Plus />
-                  </IncrementButton>
-                </div>
+          {coffeeCart.map((coffee) => (
+            <li key={coffee.title}>
+              <img src={coffee.image_source} alt="" />
+              <CoffeeInfo>
+                <span>{coffee.title}</span>
+                <ButtonContainer>
+                  <div>
+                    <DecrementButton
+                      type="button"
+                      onClick={() => handleDecreaseCoffee(coffee.title)}
+                    >
+                      <Minus />
+                    </DecrementButton>
+                    <input
+                      type="amount"
+                      id="price"
+                      step={1}
+                      placeholder={String(coffee.amount)}
+                      readOnly
+                    />
+                    <IncrementButton
+                      type="button"
+                      onClick={() => handleIncreaseCoffee(coffee.title)}
+                    >
+                      <Plus />
+                    </IncrementButton>
+                  </div>
 
-                <RemoveButton>
-                  <Trash />
-                  <span>REMOVER</span>
-                </RemoveButton>
-              </ButtonContainer>
-            </CoffeeInfo>
-            <Price>R$ 9,90</Price>
-          </li>
-
-          <li>
-            <img src="src/assets/coffee_images/american_espresso.png" alt="" />
-            <CoffeeInfo>
-              <span>Expresso Tradicional</span>
-              <ButtonContainer>
-                <div>
-                  <DecrementButton>
-                    <Minus />
-                  </DecrementButton>
-                  <input
-                    type="amount"
-                    id="price"
-                    step={1}
-                    placeholder="1"
-                    readOnly
-                  />
-                  <IncrementButton>
-                    <Plus />
-                  </IncrementButton>
-                </div>
-
-                <RemoveButton>
-                  <Trash />
-                  <span>REMOVER</span>
-                </RemoveButton>
-              </ButtonContainer>
-            </CoffeeInfo>
-            <Price>R$ 9,90</Price>
-          </li>
+                  <RemoveButton
+                    type="button"
+                    onClick={() => {
+                      handleRemoveCoffee(coffee.title);
+                    }}
+                  >
+                    <Trash />
+                    <span>REMOVER</span>
+                  </RemoveButton>
+                </ButtonContainer>
+              </CoffeeInfo>
+              <Price>R$ 9,90</Price>
+            </li>
+          ))}
         </ul>
 
         <CheckoutSummary>
