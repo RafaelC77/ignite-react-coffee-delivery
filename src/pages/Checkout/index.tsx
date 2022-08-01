@@ -80,15 +80,15 @@ export function Checkout() {
             </header>
 
             <PaymentOptions>
-              <button>
+              <button type="button">
                 <CreditCard size={16} />
                 <span>CARTÃO DE CRÉDITO</span>
               </button>
-              <button>
+              <button type="button">
                 <Bank size={16} />
                 <span>CARTÃO DE DÉBITO</span>
               </button>
-              <button>
+              <button type="button">
                 <Money size={16} />
                 <span>DINHEIRO</span>
               </button>

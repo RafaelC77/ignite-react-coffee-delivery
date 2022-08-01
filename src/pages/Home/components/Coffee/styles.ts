@@ -99,6 +99,10 @@ export const DecrementButton = styled.button`
 
   position: absolute;
   left: 0.5rem;
+
+  &:hover {
+    color: ${(props) => props.theme["purple-dark"]};
+  }
 `;
 
 export const IncrementButton = styled.button`
@@ -108,6 +112,10 @@ export const IncrementButton = styled.button`
 
   position: absolute;
   right: 0.5rem;
+
+  &:hover {
+    color: ${(props) => props.theme["purple-dark"]};
+  }
 `;
 
 export const AddToCartButton = styled.button`
@@ -123,4 +131,10 @@ export const AddToCartButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: 0.1s;
+
+  &:hover {
+    background: ${(props) => props.theme["purple"]};
+  }
 `;

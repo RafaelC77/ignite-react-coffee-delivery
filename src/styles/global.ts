@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 
+button {
+    cursor: pointer;
+}
+
 body {
     background-color: ${(props) => props.theme["background"]};
     color: ${(props) => props.theme["base-text"]};

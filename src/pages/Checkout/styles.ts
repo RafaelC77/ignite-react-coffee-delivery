@@ -79,7 +79,7 @@ export const InputFields = styled.div`
 
 export const BaseInput = styled.input`
   background: ${(props) => props.theme["base-input"]};
-  color: ${(props) => props.theme["base-label"]};
+  color: ${(props) => props.theme["base-text"]};
   font-size: 0.875rem;
   height: 2.625rem;
   padding: 0.75rem;
@@ -88,6 +88,10 @@ export const BaseInput = styled.input`
 
   &::placeholder {
     color: ${(props) => props.theme["base-label"]};
+  }
+
+  &:focus {
+    outline: 1px solid ${(props) => props.theme["yellow-dark"]};
   }
 `;
 
@@ -160,11 +164,24 @@ export const PaymentOptions = styled.div`
     justify-content: flex-start;
     align-items: center;
 
+    &:hover {
+      background: ${(props) => props.theme["base-hover"]};
+    }
+
+    &:active {
+      background: ${(props) => props.theme["purple-light"]};
+      outline: 1px solid ${(props) => props.theme["purple"]};
+    }
+
     span {
       font-size: 0.75rem;
       line-height: 160%;
       text-transform: uppercase;
       color: ${(props) => props.theme["base-text"]};
+
+      &:hover {
+        color: ${(props) => props.theme["base-subtitle"]};
+      }
     }
   }
 `;
@@ -232,6 +249,10 @@ export const DecrementButton = styled.button`
 
   position: absolute;
   left: 0.5rem;
+
+  &:hover {
+    color: ${(props) => props.theme["purple-dark"]};
+  }
 `;
 
 export const IncrementButton = styled.button`
@@ -241,6 +262,10 @@ export const IncrementButton = styled.button`
 
   position: absolute;
   right: 0.5rem;
+
+  &:hover {
+    color: ${(props) => props.theme["purple-dark"]};
+  }
 `;
 
 export const RemoveButton = styled.button`
@@ -255,10 +280,20 @@ export const RemoveButton = styled.button`
   align-items: center;
   gap: 0.25rem;
 
+  transition: 0.1s;
+
   span {
     font-size: 0.75rem;
     line-height: 160%;
     color: ${(props) => props.theme["base-text"]};
+
+    &:hover {
+      color: ${(props) => props.theme["base-subtitle"]};
+    }
+  }
+
+  &:hover {
+    background: ${(props) => props.theme["base-hover"]};
   }
 `;
 
@@ -327,4 +362,9 @@ export const ConfirmOrderButton = styled.button`
   font-size: 0.875rem;
   line-height: 160%;
   text-transform: uppercase;
+  transition: 0.1s;
+
+  &:hover {
+    background: ${(props) => props.theme["yellow-dark"]};
+  }
 `;
