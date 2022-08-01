@@ -1,4 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import {
   Address,
   DeliveryInfo,
@@ -9,6 +11,8 @@ import {
 } from "./styles";
 
 export function Success() {
+  const { order } = useContext(CartContext);
+
   return (
     <SuccessContainer>
       <h1>Uhu! Pedido confirmado</h1>
@@ -21,9 +25,13 @@ export function Success() {
               <MapPin weight="fill" size={16} />
             </div>
             <span>
-              Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+              Entrega em{" "}
+              <strong>
+                {order?.address.street}, {order?.address.number}
+              </strong>
               <br />
-              Farrapos - Porto Alegre, RS
+              {order?.address.neighborhood} - {order?.address.city},{" "}
+              {order?.address.state}
             </span>
           </Address>
           <Time>
@@ -43,7 +51,7 @@ export function Success() {
             <span>
               Pagamento na entrega
               <br />
-              <strong>Cartão de Crédito</strong>
+              <strong>{order?.payment_method}</strong>
             </span>
           </Payment>
         </DeliveryInfo>

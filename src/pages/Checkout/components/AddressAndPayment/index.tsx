@@ -5,6 +5,8 @@ import {
   MapPinLine,
   Money,
 } from "phosphor-react";
+import { useFormContext } from "react-hook-form";
+
 import {
   AddressAndPaymentInfo,
   AddressForm,
@@ -21,6 +23,8 @@ import {
 } from "./styles";
 
 export function AddressAndPayment() {
+  const { register } = useFormContext();
+
   return (
     <AddressAndPaymentInfo>
       <h2>Complete seu pedido</h2>
@@ -35,16 +39,51 @@ export function AddressAndPayment() {
         </header>
 
         <InputFields>
-          <PostalCodeInput type="text" placeholder="CEP" />
-          <StreetInput type="text" placeholder="Rua" />
-          <NumberInput type="text" placeholder="Número" />
+          <PostalCodeInput
+            type="text"
+            id="postalCode"
+            placeholder="CEP"
+            {...register("postalCode", { valueAsNumber: true })}
+          />
+          <StreetInput
+            type="text"
+            id="street"
+            placeholder="Rua"
+            {...register("street")}
+          />
+          <NumberInput
+            type="text"
+            id="number"
+            placeholder="Número"
+            {...register("number", { valueAsNumber: true })}
+          />
           <div>
-            <AditionalInfo type="text" placeholder="Complemento" />
+            <AditionalInfo
+              type="text"
+              id="aditionalInfo"
+              placeholder="Complemento"
+              {...register("aditionalInfo")}
+            />
             <span>Opcional</span>
           </div>
-          <BaseInput type="text" placeholder="Bairro" />
-          <CityInfo type="text" placeholder="Cidade" />
-          <StateInfo type="text" placeholder="UF" />
+          <BaseInput
+            type="text"
+            id="neighborhood"
+            placeholder="Bairro"
+            {...register("neighborhood")}
+          />
+          <CityInfo
+            type="text"
+            id="city"
+            placeholder="Cidade"
+            {...register("city")}
+          />
+          <StateInfo
+            type="text"
+            id="state"
+            placeholder="UF"
+            {...register("state")}
+          />
         </InputFields>
       </AddressForm>
 
