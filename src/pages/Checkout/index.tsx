@@ -26,16 +26,15 @@ export function Checkout() {
     resolver: zodResolver(checkoutFormValidationSchema),
   });
 
-  const { createNewOrder } = useContext(CartContext);
+  const { createNewOrder, resetCart } = useContext(CartContext);
   const { handleSubmit, reset, formState } = checkoutForm;
   const { errors } = formState;
   const navigate = useNavigate();
 
-  console.log(errors);
-
   function handleConfirmOrder(data: CheckoutFormData) {
     createNewOrder(data);
     reset();
+    resetCart();
     navigate("/success");
   }
 

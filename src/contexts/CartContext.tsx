@@ -30,6 +30,7 @@ interface CartContextType {
   setCoffee: (title: string, url: string, amount: number) => void;
   updateCoffeeCart: (cart: ICoffee[]) => void;
   createNewOrder: (order: CreateNewOrderData) => void;
+  resetCart: () => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -51,6 +52,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   function updateCoffeeCart(cart: ICoffee[]) {
     setCoffeeCart(cart);
+  }
+
+  function resetCart() {
+    setCoffeeCart([]);
   }
 
   function createNewOrder(data: CreateNewOrderData) {
@@ -76,6 +81,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         updateCoffeeCart,
         order,
         createNewOrder,
+        resetCart,
       }}
     >
       {children}

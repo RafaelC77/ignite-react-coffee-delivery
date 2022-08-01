@@ -54,8 +54,6 @@ export function Coffee({
     setCoffeAmount((prevState) => prevState - 1);
   }
 
-  console.log(coffeeCart);
-
   return (
     <CoffeeComponent>
       <img
