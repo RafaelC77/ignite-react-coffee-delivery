@@ -1,6 +1,7 @@
 import { Minus, Plus, Trash } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
+import { formatPrice } from "../../../../utils/format";
 
 import {
   SelectedCoffeesInfo,
@@ -19,6 +20,19 @@ import {
 
 export function SelectedCoffees() {
   const { coffeeCart, updateCoffeeCart } = useContext(CartContext);
+
+  const formattedCart = coffeeCart.map((coffee) => {
+    return {
+      ...coffee,
+      subtotal: formatPrice(coffee.amount * 9.9),
+    };
+  });
+
+  const total = coffeeCart.reduce((sumTotal, coffee) => {
+    return sumTotal + coffee.amount * 9.9;
+  }, 0);
+
+  const totalWithFee = total + 3.5;
 
   function handleIncreaseCoffee(title: string) {
     const newCoffeeCart = [...coffeeCart];
@@ -60,7 +74,7 @@ export function SelectedCoffees() {
       <h2>Cafés selecionados</h2>
       <SelectedCoffeesCard>
         <ul>
-          {coffeeCart.map((coffee) => (
+          {formattedCart.map((coffee) => (
             <li key={coffee.title}>
               <img src={coffee.image_source} alt="" />
               <CoffeeInfo>
@@ -99,7 +113,7 @@ export function SelectedCoffees() {
                   </RemoveButton>
                 </ButtonContainer>
               </CoffeeInfo>
-              <Price>R$ 9,90</Price>
+              <Price>{coffee.subtotal}</Price>
             </li>
           ))}
         </ul>
@@ -107,7 +121,7 @@ export function SelectedCoffees() {
         <CheckoutSummary>
           <div>
             <span>Total de itens</span>
-            <TotalItensPrice>R$ 29,70</TotalItensPrice>
+            <TotalItensPrice>{formatPrice(total)}</TotalItensPrice>
           </div>
           <div>
             <span>Entrega</span>
@@ -116,7 +130,7 @@ export function SelectedCoffees() {
 
           <TotalPrice>
             <span>Total</span>
-            <span>R$ 33,20</span>
+            <span>{formatPrice(totalWithFee)}</span>
           </TotalPrice>
         </CheckoutSummary>
 
