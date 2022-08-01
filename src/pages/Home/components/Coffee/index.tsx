@@ -30,9 +30,9 @@ export function Coffee({
   function handleAddCoffee() {
     const newCoffeeCart = [...coffeeCart];
 
-    const coffeeExists = newCoffeeCart.find((coffee) => (coffee.title = title));
+    const coffeeExists = newCoffeeCart.find((coffee) => coffee.title === title);
 
-    if (coffeeExists) {
+    if (!!coffeeExists) {
       const coffeeIndex = newCoffeeCart.indexOf(coffeeExists);
 
       newCoffeeCart[coffeeIndex].amount = coffeeExists.amount + coffeeAmount;
