@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useRef, useState } from "react";
 
 interface ICoffee {
   image_source: string;
@@ -42,6 +42,25 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [coffeeCart, setCoffeeCart] = useState<ICoffee[]>([]);
   const [order, setOrder] = useState<IOrder | null>(null);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    const storedState = localStorage.getItem("@ignite:coffee-delivery-1.0.0");
+
+    if (storedState) {
+      setCoffeeCart(JSON.parse(storedState));
+    }
+  }, []);
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffeeCart);
+
+    if (isMounted.current) {
+      localStorage.setItem("@ignite:coffee-delivery-1.0.0", stateJSON);
+    } else {
+      isMounted.current = true;
+    }
+  }, [coffeeCart]);
 
   function setCoffee(title: string, url: string, amount: number) {
     setCoffeeCart((prevState) => [
