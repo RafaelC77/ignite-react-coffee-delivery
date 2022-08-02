@@ -56,6 +56,7 @@ export const AddToCartComponent = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 2rem;
   padding: 0 1.5rem;
 
