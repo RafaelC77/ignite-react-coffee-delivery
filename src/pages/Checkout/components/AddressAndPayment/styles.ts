@@ -150,7 +150,7 @@ export const PaymentOptions = styled.div`
       background: ${(props) => props.theme["base-hover"]};
     }
 
-    &:active {
+    &:focus {
       background: ${(props) => props.theme["purple-light"]};
       outline: 1px solid ${(props) => props.theme["purple"]};
     }

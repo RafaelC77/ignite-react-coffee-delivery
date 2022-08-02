@@ -5,7 +5,9 @@ import {
   MapPinLine,
   Money,
 } from "phosphor-react";
+import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
+import { CartContext } from "../../../../contexts/CartContext";
 
 import {
   AddressAndPaymentInfo,
@@ -24,6 +26,11 @@ import {
 
 export function AddressAndPayment() {
   const { register } = useFormContext();
+  const { setPaymentMethod } = useContext(CartContext);
+
+  function handlePayment(payment: string) {
+    setPaymentMethod(payment);
+  }
 
   return (
     <AddressAndPaymentInfo>
@@ -100,15 +107,21 @@ export function AddressAndPayment() {
         </header>
 
         <PaymentOptions>
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => handlePayment("Cartão de Crédito")}
+          >
             <CreditCard size={16} />
             <span>CARTÃO DE CRÉDITO</span>
           </button>
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => handlePayment("Cartão de Débito")}
+          >
             <Bank size={16} />
             <span>CARTÃO DE DÉBITO</span>
           </button>
-          <button type="button">
+          <button type="button" onClick={() => handlePayment("Dinheiro")}>
             <Money size={16} />
             <span>DINHEIRO</span>
           </button>

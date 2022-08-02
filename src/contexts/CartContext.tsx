@@ -31,6 +31,7 @@ interface CartContextType {
   updateCoffeeCart: (cart: ICoffee[]) => void;
   createNewOrder: (order: CreateNewOrderData) => void;
   resetCart: () => void;
+  setPaymentMethod: (payment: string) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -42,6 +43,7 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [coffeeCart, setCoffeeCart] = useState<ICoffee[]>([]);
   const [order, setOrder] = useState<IOrder | null>(null);
+  const [payment, setPayment] = useState<string>("");
   const isMounted = useRef(false);
 
   useEffect(() => {
@@ -86,10 +88,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         state: data.state,
         neighborhood: data.neighborhood,
       },
-      payment_method: "Cartão de Crédito",
+      payment_method: payment,
     };
 
     setOrder(newOrder);
+  }
+
+  function setPaymentMethod(payment: string) {
+    setPayment(payment);
   }
 
   return (
@@ -101,6 +107,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         order,
         createNewOrder,
         resetCart,
+        setPaymentMethod,
       }}
     >
       {children}

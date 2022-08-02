@@ -28,7 +28,7 @@ export function Checkout() {
 
   const { createNewOrder, resetCart } = useContext(CartContext);
   const { handleSubmit, reset, formState } = checkoutForm;
-  const { errors } = formState;
+
   const navigate = useNavigate();
 
   function handleConfirmOrder(data: CheckoutFormData) {
