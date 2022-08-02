@@ -65,9 +65,9 @@ export const AddToCartComponent = styled.div`
     background: ${(props) => props.theme["base-button"]};
     border-radius: 6px;
     border: 0;
-    text-indent: 55%;
     padding: 0 0.5rem;
     color: ${(props) => props.theme["base-title"]};
+    text-align: center;
   }
 
   div {
