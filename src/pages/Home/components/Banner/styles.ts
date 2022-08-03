@@ -1,10 +1,18 @@
 import styled from "styled-components";
 
 export const BannerComponent = styled.div`
+  width: 100%;
+  padding: 5.75rem 0;
+  background: url("src/assets/banner-background.png");
+  background-size: contain;
+`;
+
+export const BannerContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5.75rem 0;
+
+  width: 100%;
 
   h1 {
     font-family: "Baloo 2", sans-serif;

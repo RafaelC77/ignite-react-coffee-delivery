@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const SuccessContainer = styled.main`
+export const SuccessComponent = styled.div`
   margin-top: 5rem;
+`;
 
+export const SuccessContainer = styled.main`
   h1 {
     font-family: "Baloo 2", sans-serif;
     font-weight: 800;

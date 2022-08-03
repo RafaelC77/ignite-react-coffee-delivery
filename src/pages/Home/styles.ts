@@ -13,6 +13,7 @@ export const CoffeeListComponent = styled.main`
   ul {
     list-style: none;
     margin-top: 3.375rem;
+    margin-bottom: 10rem;
 
     display: flex;
     flex-wrap: wrap;

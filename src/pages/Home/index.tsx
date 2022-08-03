@@ -9,7 +9,7 @@ export function Home() {
     <>
       <Banner />
 
-      <CoffeeListComponent>
+      <CoffeeListComponent className="container">
         <h2>Nossos cafés</h2>
 
         <ul>

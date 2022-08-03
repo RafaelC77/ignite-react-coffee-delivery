@@ -3,14 +3,16 @@ import styled from "styled-components";
 export const HeaderComponent = styled.header`
   padding: 2rem 0;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   position: sticky;
   top: 0;
 
   background: ${(props) => props.theme["background"]};
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 interface InfoBarProps {

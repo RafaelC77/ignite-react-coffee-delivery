@@ -39,7 +39,7 @@ export function Checkout() {
   }
 
   return (
-    <CheckoutComponent>
+    <CheckoutComponent className="container">
       <form onSubmit={handleSubmit(handleConfirmOrder)}>
         <FormProvider {...checkoutForm}>
           <AddressAndPayment />
