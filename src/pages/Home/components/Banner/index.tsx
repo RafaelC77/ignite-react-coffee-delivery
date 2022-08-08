@@ -2,7 +2,7 @@ import { ShoppingCart, Package, Timer, Coffee } from "phosphor-react";
 
 import bannerImage from "../../../../assets/coffee-delivery-banner.png";
 
-import { BannerComponent, BannerContainer } from "./styles";
+import { BannerComponent, BannerContainer, IntroIcon } from "./styles";
 
 export function Banner() {
   return (
@@ -16,27 +16,27 @@ export function Banner() {
           </p>
           <ul>
             <li>
-              <div>
+              <IntroIcon color="yellow-dark">
                 <ShoppingCart weight="fill" />
-              </div>
+              </IntroIcon>
               <span>Compra simples e segura</span>
             </li>
             <li>
-              <div>
+              <IntroIcon color="base-text">
                 <Package weight="fill" />
-              </div>
+              </IntroIcon>
               <span>Embalagem mantém o café intacto</span>
             </li>
             <li>
-              <div>
+              <IntroIcon color="yellow">
                 <Timer weight="fill" />
-              </div>
+              </IntroIcon>
               <span>Entrega rápida e rastreada</span>
             </li>
             <li>
-              <div>
+              <IntroIcon color="purple">
                 <Coffee weight="fill" />
-              </div>
+              </IntroIcon>
               <span>O café chega fresquinho até você</span>
             </li>
           </ul>

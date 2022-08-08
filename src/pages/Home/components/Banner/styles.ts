@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IntroIconProps {
+  color: "yellow-dark" | "base-text" | "yellow" | "purple";
+}
+
 export const BannerComponent = styled.div`
   width: 100%;
   padding: 5.75rem 0;
@@ -48,43 +52,28 @@ export const BannerContainer = styled.div`
       justify-content: start;
       gap: 0.75rem;
 
-      div {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 999px;
-
-        color: ${(props) => props.theme["background"]};
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
       span {
         font-size: 1rem;
         line-height: 130%;
         color: ${(props) => props.theme["base-text"]};
       }
     }
-
-    li:nth-child(1) div {
-      background: ${(props) => props.theme["yellow-dark"]};
-    }
-
-    li:nth-child(2) div {
-      background: ${(props) => props.theme["base-text"]};
-    }
-
-    li:nth-child(3) div {
-      background: ${(props) => props.theme["yellow"]};
-    }
-
-    li:nth-child(4) div {
-      background: ${(props) => props.theme["purple"]};
-    }
   }
 
   img {
     height: 22.5rem;
   }
+`;
+
+export const IntroIcon = styled.div<IntroIconProps>`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+
+  color: ${(props) => props.theme["background"]};
+  background-color: ${(props) => props.theme[props.color]};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
