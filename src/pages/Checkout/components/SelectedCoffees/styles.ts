@@ -115,24 +115,6 @@ export const ButtonContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   margin-top: 0.5rem;
-
-  div {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 4.5rem;
-  }
-
-  input {
-    width: 4.5rem;
-    height: 2rem;
-    background: ${(props) => props.theme["base-button"]};
-    border-radius: 6px;
-    border: 0;
-    text-indent: 45%;
-    padding: 0 0.5rem;
-    color: ${(props) => props.theme["base-title"]};
-  }
 `;
 
 export const CheckoutSummary = styled.div`

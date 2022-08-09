@@ -1,12 +1,11 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
 import { useContext, useState } from "react";
+import { ChangeAmountButton } from "../../../../components/ChangeAmountButton";
 import { CartContext } from "../../../../contexts/CartContext";
 import {
   AddToCartButton,
   AddToCartComponent,
   CoffeeComponent,
-  DecrementButton,
-  IncrementButton,
   PriceTag,
   Tag,
 } from "./styles";
@@ -71,21 +70,12 @@ export function Coffee({
         <PriceTag>
           R$ <strong>9,90</strong>
         </PriceTag>
-        <div>
-          <DecrementButton onClick={handleDecreaseCoffee}>
-            <Minus />
-          </DecrementButton>
-          <input
-            type="number"
-            id="price"
-            step={1}
-            placeholder={String(coffeeAmount)}
-            readOnly
-          />
-          <IncrementButton onClick={handleIncreaseCoffee}>
-            <Plus />
-          </IncrementButton>
-        </div>
+
+        <ChangeAmountButton
+          decreaseCoffee={handleDecreaseCoffee}
+          increaseCoffee={handleIncreaseCoffee}
+          coffeeAmount={coffeeAmount}
+        />
 
         <AddToCartButton onClick={handleAddCoffee}>
           <ShoppingCart weight="fill" size={22} />

@@ -60,21 +60,7 @@ export const AddToCartComponent = styled.div`
   margin-top: 2rem;
   padding: 0 1.5rem;
 
-  input {
-    width: 4.5rem;
-    height: 2.375rem;
-    background: ${(props) => props.theme["base-button"]};
-    border-radius: 6px;
-    border: 0;
-    padding: 0 0.5rem;
-    color: ${(props) => props.theme["base-title"]};
-    text-align: center;
-  }
-
   div {
-    position: relative;
-    display: flex;
-    align-items: center;
     margin-left: auto;
   }
 `;
@@ -89,33 +75,6 @@ export const PriceTag = styled.span`
     font-weight: 800;
     font-size: 1.5rem;
     line-height: 1.95rem;
-  }
-`;
-
-export const DecrementButton = styled.button`
-  background: transparent;
-  border: 0;
-
-  color: ${(props) => props.theme["purple"]};
-
-  position: absolute;
-  left: 0.5rem;
-
-  &:hover {
-    color: ${(props) => props.theme["purple-dark"]};
-  }
-`;
-
-export const IncrementButton = styled.button`
-  background: transparent;
-  border: 0;
-  color: ${(props) => props.theme["purple"]};
-
-  position: absolute;
-  right: 0.5rem;
-
-  &:hover {
-    color: ${(props) => props.theme["purple-dark"]};
   }
 `;
 

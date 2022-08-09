@@ -1,5 +1,6 @@
-import { Minus, Plus, Trash } from "phosphor-react";
+import { Trash } from "phosphor-react";
 import { useContext } from "react";
+import { ChangeAmountButton } from "../../../../components/ChangeAmountButton";
 import { CartContext } from "../../../../contexts/CartContext";
 import { formatPrice } from "../../../../utils/format";
 
@@ -8,8 +9,6 @@ import {
   SelectedCoffeesCard,
   CoffeeInfo,
   ButtonContainer,
-  DecrementButton,
-  IncrementButton,
   RemoveButton,
   Price,
   CheckoutSummary,
@@ -80,27 +79,12 @@ export function SelectedCoffees() {
               <CoffeeInfo>
                 <span>{coffee.title}</span>
                 <ButtonContainer>
-                  <div>
-                    <DecrementButton
-                      type="button"
-                      onClick={() => handleDecreaseCoffee(coffee.title)}
-                    >
-                      <Minus />
-                    </DecrementButton>
-                    <input
-                      type="amount"
-                      id="price"
-                      step={1}
-                      placeholder={String(coffee.amount)}
-                      readOnly
-                    />
-                    <IncrementButton
-                      type="button"
-                      onClick={() => handleIncreaseCoffee(coffee.title)}
-                    >
-                      <Plus />
-                    </IncrementButton>
-                  </div>
+                  <ChangeAmountButton
+                    coffeeAmount={coffee.amount}
+                    decreaseCoffee={() => handleDecreaseCoffee(coffee.title)}
+                    increaseCoffee={() => handleIncreaseCoffee(coffee.title)}
+                    thin={true}
+                  />
 
                   <RemoveButton
                     type="button"
