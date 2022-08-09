@@ -130,40 +130,49 @@ export const PaymentMethod = styled.div`
 `;
 
 export const PaymentOptions = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+`;
+
+export const PaymentContainer = styled.div`
+  input {
+    visibility: hidden;
+    appearance: none;
+  }
+
+  input:checked + label div {
+    background: ${(props) => props.theme["purple-light"]};
+    outline: 1px solid ${(props) => props.theme["purple"]};
+  }
+`;
+
+export const PaymentContent = styled.div`
+  color: ${(props) => props.theme["purple"]};
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   gap: 0.75rem;
 
-  button {
-    width: 100%;
-    padding: 1rem;
-    background: ${(props) => props.theme["base-button"]};
-    border: 0;
-    border-radius: 6px;
-    color: ${(props) => props.theme["purple"]};
+  width: 100%;
+  padding: 1rem;
+  background: ${(props) => props.theme["base-button"]};
+  border: 0;
+  border-radius: 6px;
 
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-start;
-    align-items: center;
+  &:hover {
+    background: ${(props) => props.theme["base-hover"]};
+  }
+
+  span {
+    font-size: 0.75rem;
+    line-height: 160%;
+    text-transform: uppercase;
+    color: ${(props) => props.theme["base-text"]};
 
     &:hover {
-      background: ${(props) => props.theme["base-hover"]};
-    }
-
-    &:focus {
-      background: ${(props) => props.theme["purple-light"]};
-      outline: 1px solid ${(props) => props.theme["purple"]};
-    }
-
-    span {
-      font-size: 0.75rem;
-      line-height: 160%;
-      text-transform: uppercase;
-      color: ${(props) => props.theme["base-text"]};
-
-      &:hover {
-        color: ${(props) => props.theme["base-subtitle"]};
-      }
+      color: ${(props) => props.theme["base-subtitle"]};
     }
   }
 `;

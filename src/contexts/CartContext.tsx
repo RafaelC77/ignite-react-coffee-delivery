@@ -23,6 +23,7 @@ interface CreateNewOrderData {
   neighborhood: string;
   city: string;
   state: string;
+  paymentMethod: string;
 }
 interface CartContextType {
   coffeeCart: ICoffee[];
@@ -88,7 +89,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         state: data.state,
         neighborhood: data.neighborhood,
       },
-      payment_method: payment,
+      payment_method: data.paymentMethod,
     };
 
     setOrder(newOrder);

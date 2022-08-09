@@ -17,6 +17,8 @@ import {
   CityInfo,
   InputFields,
   NumberInput,
+  PaymentContainer,
+  PaymentContent,
   PaymentMethod,
   PaymentOptions,
   PostalCodeInput,
@@ -26,11 +28,6 @@ import {
 
 export function AddressAndPayment() {
   const { register } = useFormContext();
-  const { setPaymentMethod } = useContext(CartContext);
-
-  function handlePayment(payment: string) {
-    setPaymentMethod(payment);
-  }
 
   return (
     <AddressAndPaymentInfo>
@@ -107,24 +104,53 @@ export function AddressAndPayment() {
         </header>
 
         <PaymentOptions>
-          <button
-            type="button"
-            onClick={() => handlePayment("Cartão de Crédito")}
-          >
-            <CreditCard size={16} />
-            <span>CARTÃO DE CRÉDITO</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => handlePayment("Cartão de Débito")}
-          >
-            <Bank size={16} />
-            <span>CARTÃO DE DÉBITO</span>
-          </button>
-          <button type="button" onClick={() => handlePayment("Dinheiro")}>
-            <Money size={16} />
-            <span>DINHEIRO</span>
-          </button>
+          <PaymentContainer>
+            <input
+              type="radio"
+              id="credit"
+              value="Cartão de Crédito"
+              {...register("paymentMethod")}
+            />
+
+            <label htmlFor="credit">
+              <PaymentContent>
+                <CreditCard size={16} />
+                <span>CARTÃO DE CRÉDITO</span>
+              </PaymentContent>
+            </label>
+          </PaymentContainer>
+
+          <PaymentContainer>
+            <input
+              type="radio"
+              id="debit"
+              value="Cartão de débito"
+              {...register("paymentMethod")}
+            />
+
+            <label htmlFor="debit">
+              <PaymentContent>
+                <Bank size={16} />
+                <span>CARTÃO DE DÉBITO</span>
+              </PaymentContent>
+            </label>
+          </PaymentContainer>
+
+          <PaymentContainer>
+            <input
+              type="radio"
+              id="cash"
+              value="Dinheiro"
+              {...register("paymentMethod")}
+            />
+
+            <label htmlFor="cash">
+              <PaymentContent>
+                <Money size={16} />
+                <span>DINHEIRO</span>
+              </PaymentContent>
+            </label>
+          </PaymentContainer>
         </PaymentOptions>
       </PaymentMethod>
     </AddressAndPaymentInfo>
