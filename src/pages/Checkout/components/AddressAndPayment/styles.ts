@@ -42,24 +42,11 @@ export const InputFields = styled.div`
   column-gap: 0.75rem;
 
   div {
-    position: relative;
-    display: flex;
-    align-items: center;
-    grid-column: span 2;
-
-    span {
-      font-style: italic;
-      font-size: 0.75rem;
-      line-height: 130%;
-      color: ${(props) => props.theme["base-label"]};
-
-      position: absolute;
-      right: 0.75rem;
-    }
   }
 `;
 
 export const BaseInput = styled.input`
+  width: 100%;
   background: ${(props) => props.theme["base-input"]};
   color: ${(props) => props.theme["base-text"]};
   font-size: 0.875rem;
@@ -77,29 +64,51 @@ export const BaseInput = styled.input`
   }
 `;
 
-export const PostalCodeInput = styled(BaseInput)`
+export const PostalCode = styled.div`
   grid-column: 1;
 `;
 
-export const StreetInput = styled(BaseInput)`
+export const Street = styled.div`
   grid-column: span 3;
 `;
 
-export const NumberInput = styled(BaseInput)`
+export const Number = styled.div`
   grid-column: span 1;
 `;
 
-export const CityInfo = styled(BaseInput)`
+export const CityInfo = styled.div`
   grid-column: span 1;
 `;
 
-export const StateInfo = styled(BaseInput)`
+export const StateInfo = styled.div`
   grid-column: span 1;
 `;
 
-export const AditionalInfo = styled(BaseInput)`
-  width: 100%;
+export const AditionalInfo = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  grid-column: span 2;
+
+  span {
+    font-style: italic;
+    font-size: 0.75rem;
+    line-height: 130%;
+    color: ${(props) => props.theme["base-label"]};
+
+    position: absolute;
+    right: 0.75rem;
+  }
+`;
+
+export const Neighborhood = styled.div`
+  grid-column: span 1;
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: 0.75rem;
+  color: ${(props) => props.theme["danger"]};
+  margin-top: 0.25rem;
 `;
 
 export const PaymentMethod = styled.div`
@@ -175,4 +184,8 @@ export const PaymentContent = styled.div`
       color: ${(props) => props.theme["base-subtitle"]};
     }
   }
+`;
+
+export const PaymentErrorMessage = styled(ErrorMessage)`
+  grid-column: span 3;
 `;

@@ -5,9 +5,7 @@ import {
   MapPinLine,
   Money,
 } from "phosphor-react";
-import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
-import { CartContext } from "../../../../contexts/CartContext";
 
 import {
   AddressAndPaymentInfo,
@@ -15,20 +13,26 @@ import {
   AditionalInfo,
   BaseInput,
   CityInfo,
+  ErrorMessage,
   InputFields,
-  NumberInput,
+  Neighborhood,
+  Number,
   PaymentContainer,
   PaymentContent,
+  PaymentErrorMessage,
   PaymentMethod,
   PaymentOptions,
-  PostalCodeInput,
+  PostalCode,
   StateInfo,
-  StreetInput,
+  Street,
 } from "./styles";
 
 export function AddressAndPayment() {
-  const { register } = useFormContext();
+  const { register, formState } = useFormContext<any>();
 
+  const { errors } = formState;
+
+  console.log(errors);
   return (
     <AddressAndPaymentInfo>
       <h2>Complete seu pedido</h2>
@@ -43,51 +47,83 @@ export function AddressAndPayment() {
         </header>
 
         <InputFields>
-          <PostalCodeInput
-            type="text"
-            id="postalCode"
-            placeholder="CEP"
-            {...register("postalCode", { valueAsNumber: true })}
-          />
-          <StreetInput
-            type="text"
-            id="street"
-            placeholder="Rua"
-            {...register("street")}
-          />
-          <NumberInput
-            type="text"
-            id="number"
-            placeholder="Número"
-            {...register("number", { valueAsNumber: true })}
-          />
-          <div>
-            <AditionalInfo
+          <PostalCode>
+            <BaseInput
+              type="text"
+              id="postalCode"
+              placeholder="CEP"
+              {...register("postalCode")}
+            />
+            {errors?.postalCode?.message && (
+              <ErrorMessage>{String(errors.postalCode.message)}</ErrorMessage>
+            )}
+          </PostalCode>
+          <Street>
+            <BaseInput
+              type="text"
+              id="street"
+              placeholder="Rua"
+              {...register("street")}
+            />
+            {errors?.street?.message && (
+              <ErrorMessage>{String(errors.street.message)}</ErrorMessage>
+            )}
+          </Street>
+
+          <Number>
+            <BaseInput
+              type="text"
+              id="number"
+              placeholder="Número"
+              {...register("number")}
+            />
+            {errors?.number?.message && (
+              <ErrorMessage>{String(errors.number.message)}</ErrorMessage>
+            )}
+          </Number>
+
+          <AditionalInfo>
+            <BaseInput
               type="text"
               id="aditionalInfo"
               placeholder="Complemento"
               {...register("aditionalInfo")}
             />
             <span>Opcional</span>
-          </div>
-          <BaseInput
-            type="text"
-            id="neighborhood"
-            placeholder="Bairro"
-            {...register("neighborhood")}
-          />
-          <CityInfo
-            type="text"
-            id="city"
-            placeholder="Cidade"
-            {...register("city")}
-          />
-          <StateInfo
-            type="text"
-            id="state"
-            placeholder="UF"
-            {...register("state")}
-          />
+          </AditionalInfo>
+          <Neighborhood>
+            <BaseInput
+              type="text"
+              id="neighborhood"
+              placeholder="Bairro"
+              {...register("neighborhood")}
+            />
+            {errors?.neighborhood?.message && (
+              <ErrorMessage>{String(errors.neighborhood.message)}</ErrorMessage>
+            )}
+          </Neighborhood>
+          <CityInfo>
+            <BaseInput
+              type="text"
+              id="city"
+              placeholder="Cidade"
+              {...register("city")}
+            />
+            {errors?.city?.message && (
+              <ErrorMessage>{String(errors.city.message)}</ErrorMessage>
+            )}
+          </CityInfo>
+          <StateInfo>
+            <BaseInput
+              type="text"
+              id="state"
+              placeholder="UF"
+              {...register("state")}
+            />
+            {errors?.state?.message && (
+              <ErrorMessage>{String(errors.state.message)}</ErrorMessage>
+            )}
+          </StateInfo>
         </InputFields>
       </AddressForm>
 
@@ -124,7 +160,7 @@ export function AddressAndPayment() {
             <input
               type="radio"
               id="debit"
-              value="Cartão de débito"
+              value="Cartão de Débito"
               {...register("paymentMethod")}
             />
 
@@ -151,6 +187,12 @@ export function AddressAndPayment() {
               </PaymentContent>
             </label>
           </PaymentContainer>
+
+          {errors?.paymentMethod?.message && (
+            <PaymentErrorMessage>
+              {String(errors.paymentMethod.message)}
+            </PaymentErrorMessage>
+          )}
         </PaymentOptions>
       </PaymentMethod>
     </AddressAndPaymentInfo>

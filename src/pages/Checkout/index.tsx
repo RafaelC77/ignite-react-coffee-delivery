@@ -9,21 +9,25 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
-const PAYMENT_OPTIONS = [
-  "Cartão de Crédito",
-  "Cartão de Débito",
-  "Dinheiro",
-] as const;
+const PAYMENT_OPTIONS = {
+  credit: "Cartão de Crédito",
+  debit: "Cartão de Débito",
+  cash: "Dinheiro",
+};
 
 const checkoutFormValidationSchema = zod.object({
-  postalCode: zod.number().min(1, "Digite um CEP"),
+  postalCode: zod.string().min(1, "Digite o CEP"),
   street: zod.string().min(5, "Mínimo de 5 caracteres"),
-  number: zod.number().min(1, "Digito um número"),
+  number: zod.string().min(1, "Digito o número"),
   aditionalInfo: zod.string(),
   neighborhood: zod.string().min(1, "Digite o bairro"),
   city: zod.string().min(1, "Digite a cidade"),
   state: zod.string().min(1, "Digite o estado"),
-  paymentMethod: zod.string().min(1, "Escolha uma forma de pagamento"),
+  paymentMethod: zod.nativeEnum(PAYMENT_OPTIONS, {
+    errorMap: () => {
+      return { message: "Escolha uma forma de pagamento" };
+    },
+  }),
 });
 
 type CheckoutFormData = zod.infer<typeof checkoutFormValidationSchema>;

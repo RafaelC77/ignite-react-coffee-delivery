@@ -9,7 +9,7 @@ interface ICoffee {
 interface IOrder {
   address: {
     street: string;
-    number: number;
+    number: string;
     city: string;
     state: string;
     neighborhood: string;
@@ -19,7 +19,7 @@ interface IOrder {
 
 interface CreateNewOrderData {
   street: string;
-  number: number;
+  number: string;
   neighborhood: string;
   city: string;
   state: string;
@@ -32,7 +32,6 @@ interface CartContextType {
   updateCoffeeCart: (cart: ICoffee[]) => void;
   createNewOrder: (order: CreateNewOrderData) => void;
   resetCart: () => void;
-  setPaymentMethod: (payment: string) => void;
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -44,7 +43,6 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [coffeeCart, setCoffeeCart] = useState<ICoffee[]>([]);
   const [order, setOrder] = useState<IOrder | null>(null);
-  const [payment, setPayment] = useState<string>("");
   const isMounted = useRef(false);
 
   useEffect(() => {
@@ -95,10 +93,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setOrder(newOrder);
   }
 
-  function setPaymentMethod(payment: string) {
-    setPayment(payment);
-  }
-
   return (
     <CartContext.Provider
       value={{
@@ -108,7 +102,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         order,
         createNewOrder,
         resetCart,
-        setPaymentMethod,
       }}
     >
       {children}
