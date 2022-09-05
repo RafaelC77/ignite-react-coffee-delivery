@@ -1,7 +1,7 @@
 # ignite-react-coffee-delivery
 
 
-Este projeto foi desenvolvido como resolução do desafio do módulo 2 da trilha de react (2022) do Ignite.
+Este projeto foi desenvolvido do zero, a partir de um layout do figma, como resolução do desafio do módulo 2 da trilha de react (2022) do Ignite.
 Se trata de uma página de delivery de café com lista de cafés disponíveis,
 carrinho de compras e formulário para preencher o endereço.
 
